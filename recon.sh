@@ -8,11 +8,17 @@
 ## Project Discovery subfinder, nuclei, & notify
 ## Tomnomnom anew
 ## gowitness
+## OAM tools from OWASP
 
 
 # Running Amass for subdomains and IP addresses
 
-amass enum -df rootdomains.txt; amass db -df rootdomains.txt -names -ipv4 > amass.txt; cat amass.txt | cut -d " " -f 1 | tee amassdomains.txt | cat amass.txt | cut -d " " -f 2 | tee ipaddresses.txt
+amass enum -df rootdomains.txt 
+
+~/go/bin/oam_subs -df rootdomains.txt -names -ipv4 -show > amass.txt; cat amass.txt | cut -d " " -f 1 | tee amassdomains.txt | cat amass.txt | cut -d " " -f 2 | tee ipaddresses.txt
+
+## Legacy command deprecated in newer version of amass. Will remove.\
+## amass db -df rootdomains.txt -names -ipv4 > amass.txt; cat amass.txt | cut -d " " -f 1 | tee amassdomains.txt | cat amass.txt | cut -d " " -f 2 | tee ipaddresses.txt
 
 rm amass.txt
 
